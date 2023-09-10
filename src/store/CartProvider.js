@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import MainItems from "./components/MainItems";
-import Header from "./components/Header";
-import Cart from "./components/Cart";
-import Pagination from "./components/Pagination";
+import CartContext from "./cart-context";
 
-function App() {
-  const [cartIsShown, setCartIsShown] = useState(false);
+function CartProvider(props) {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
-
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 10;
   const lastIndex = currentPage * recordsPerPage;
@@ -17,7 +12,10 @@ function App() {
   const nPage = Math.ceil(products.length / recordsPerPage);
   const numbers = [...Array(nPage + 1).keys()].slice(1);
 
-  /***************************************/
+  console.log(records);
+  const addItemToCartHandler = (item) => {};
+
+  const removeFromCartHandler = (id) => {};
 
   useEffect(() => {
     const fetchDatasHandler = async () => {
@@ -36,7 +34,8 @@ function App() {
 
     fetchDatasHandler();
   }, []);
-  // /***************************************/
+
+  /***************************************/
 
   useEffect(() => {
     window.scrollTo({
@@ -44,7 +43,16 @@ function App() {
       behavior: "smooth",
     });
   }, [currentPage]);
-  // /***************************************/
+
+  /***************************************/
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
+  /***************************************/
 
   const prevPage = () => {
     if (currentPage !== 1) {
@@ -62,30 +70,28 @@ function App() {
     setCurrentPage(id);
   };
   /***************************************/
-
-  const showCartHandler = () => {
-    setCartIsShown(true);
+  const cartContext = {
+    item: [],
+    totalAmount: 0,
+    addItem: addItemToCartHandler,
+    removeItem: removeFromCartHandler,
+    onShow: showCartHandler,
+    onclose: hideCartHandler,
+    prevPage,
+    nextPage,
+    changePage,
+    records,
+    error,
+    numbers,
+    currentPage,
+    cartIsShown,
   };
-
-  const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
-  /***************************************/
 
   return (
-    <React.Fragment>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShow={showCartHandler} />
-      <MainItems records={records} onError={error} />
-      <Pagination
-        onPrevPage={prevPage}
-        onNextPage={nextPage}
-        onChangePage={changePage}
-        numbers={numbers}
-        currentPage={currentPage}
-      />
-    </React.Fragment>
+    <CartContext.Provider value={cartContext}>
+      {props.children}
+    </CartContext.Provider>
   );
 }
 
-export default App;
+export default CartProvider;

@@ -1,0 +1,38 @@
+.main-items {
+  width: 90%;
+  margin: auto;
+  border: 1px solid #5a1a01;
+}
+
+.main-items--content {
+  display: grid;
+  grid-template-columns: 7rem repeat(5, minmax(0, 1fr));
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+.main-items--content:first-child {
+  background-color: #b94517;
+  color: white;
+  font-weight: bold;
+}
+
+li {
+  padding: 2rem;
+  border: 1px solid #5a1a01;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+li:nth-child(2) {
+  text-align: center;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 2rem;
+  color: red;
+  margin-block: 2rem;
+}

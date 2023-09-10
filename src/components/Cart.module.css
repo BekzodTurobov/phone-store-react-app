@@ -1,0 +1,48 @@
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin: 1.6rem 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.actions button {
+  cursor: pointer;
+  padding: 0.7rem 3rem;
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  color: white;
+  background-color: #b94517;
+  border: 1px solid #b94517;
+  text-align: right;
+  transition: all 0.3s;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #8a2b06;
+  border-color: #8a2b06;
+}
+
+.actions button:active {
+  transform: translateY(5px);
+}
+
+.actions .btn-alt {
+  background-color: transparent;
+  color: #8a2b06;
+}
+
+.actions .btn-alt:hover,
+.actions .btn-alt:active {
+  color: white;
+}
