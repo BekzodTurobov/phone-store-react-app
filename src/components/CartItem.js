@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./CartItem.module.css";
+import CartContext from "../store/cart-context";
 
 function CartItem(props) {
-  const cartItems = [{ id: 1, name: "iPhone XR", amount: 2, price: 12.99 }];
+  const cartCtx = useContext(CartContext);
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
   return (
     <ul className={classes["cart-items"]}>
-      {cartItems.map((item) => (
+      {cartCtx.items.map((item) => (
         <li key={item.id} className={classes["cart-item"]}>
           <div>
             <h2>{item.name}</h2>
@@ -16,8 +25,10 @@ function CartItem(props) {
             </div>
           </div>
           <div className={classes.actions}>
-            <button>-</button>
-            <button>+</button>
+            <button onClick={cartItemRemoveHandler.bind(null, item.id)}>
+              -
+            </button>
+            <button onClick={cartItemAddHandler.bind(null, item)}>+</button>
           </div>
         </li>
       ))}

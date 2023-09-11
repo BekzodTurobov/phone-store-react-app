@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import Form from "./Form";
 import classes from "./MainItems.module.css";
 import LoadSpinner from "./LoadSpinner";
+import CartContext from "../store/cart-context";
+import PhoneItems from "./PhoneItems";
 
 function MainItems(props) {
+  const cartCtx = useContext(CartContext);
   return (
     <React.Fragment>
       <div className={classes["main-items"]}>
@@ -16,25 +18,21 @@ function MainItems(props) {
           <li>Discount Percentage</li>
           <li>Add to Cart</li>
         </ul>
-        {props.records.map((item) => (
-          <ul key={item.id} className={classes["main-items--content"]}>
-            <li>{item.id}</li>
-            <li>
-              <span>{item.brand}</span>
-              <span>{item.title}</span>
-            </li>
-            <li>{item.description}</li>
-            <li>${item.price}</li>
-            <li>{item.discountPercentage}%</li>
-            <li>
-              <Form id={item.id} />
-            </li>
-          </ul>
+        {cartCtx.records.map((item) => (
+          <PhoneItems
+            id={item.id}
+            key={item.id}
+            brand={item.brand}
+            name={item.title}
+            price={item.price}
+            description={item.description}
+            discountPercentage={item.discountPercentage}
+          />
         ))}
-        {props.onError && (
-          <p className={classes["error-message"]}>{props.onError}</p>
+        {cartCtx.error && (
+          <p className={classes["error-message"]}>{cartCtx.error}</p>
         )}
-        {props.records.length === 0 && !props.onError && <LoadSpinner />}
+        {cartCtx.records.length === 0 && !cartCtx.error && <LoadSpinner />}
       </div>
     </React.Fragment>
   );

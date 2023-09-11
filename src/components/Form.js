@@ -9,7 +9,7 @@ function Form(props) {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const enteredAmount = amountInputRef.current.value;
+    let enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
 
     if (
@@ -22,6 +22,9 @@ function Form(props) {
     } else {
       setAmountIsValid(true);
     }
+
+    props.onAddToCart(enteredAmountNumber);
+    amountInputRef.current.value = 1;
   };
 
   return (
@@ -39,7 +42,14 @@ function Form(props) {
         }}
       />
       <button>+Add</button>
-      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      {!amountIsValid && (
+        <p style={{ textAlign: "left" }}>
+          Please enter
+          <br />a valid amount
+          <br />
+          (1-5).
+        </p>
+      )}
     </form>
   );
 }

@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Pagination.module.css";
+import CartContext from "../store/cart-context";
 
 function Pagination(props) {
+  const cartCtx = useContext(CartContext);
+
   return (
     <div className={classes.pagination}>
-      <button onClick={props.onPrevPage} className="btn">
+      <button onClick={cartCtx.prevPage} className="btn">
         Prev
       </button>
       <ul className={classes.pages}>
-        {props.numbers.map((n, i) => (
+        {cartCtx.numbers.map((n, i) => (
           <li key={i}>
             <button
               onClick={() => {
-                props.onChangePage(n);
+                cartCtx.changePage(n);
               }}
-              className={`${classes[props.currentPage === n ? "active" : ""]}`}
+              className={`${
+                classes[cartCtx.currentPage === n ? "active" : ""]
+              }`}
             >
               {n}
             </button>
@@ -22,7 +27,7 @@ function Pagination(props) {
         ))}
       </ul>
 
-      <button onClick={props.onNextPage} className="btn">
+      <button onClick={cartCtx.nextPage} className="btn">
         Next
       </button>
     </div>

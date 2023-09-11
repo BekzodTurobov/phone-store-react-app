@@ -20,6 +20,7 @@
 .cart-item h2 {
   font-size: 2rem;
   margin-bottom: 1.6rem;
+  text-align: left;
 }
 
 .summary {
@@ -28,11 +29,11 @@
   justify-content: space-between;
   font-size: 1.6rem;
   font-weight: bold;
+  width: 14rem;
 }
 
 .price {
   color: #b94517;
-  margin-right: 5rem;
 }
 
 .amount {
