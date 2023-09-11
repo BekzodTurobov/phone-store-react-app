@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Form from "./Form";
 import classes from "./PhoneItems.module.css";
 import CartContext from "../store/cart-context";
+import RatingStars from "./RatingStars";
 
 function PhoneItems(props) {
   const cartCtx = useContext(CartContext);
@@ -21,6 +22,9 @@ function PhoneItems(props) {
       <li>
         <span>{props.brand}</span>
         <span>{props.name}</span>
+        <span>
+          <RatingStars rating={props.rating} />
+        </span>
       </li>
       <li>{props.description}</li>
       <li>${props.price}</li>

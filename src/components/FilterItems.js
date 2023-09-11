@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import classes from "./FilterItems.module.css";
 import { AiFillCaretDown } from "react-icons/ai";
+
 import CartContext from "../store/cart-context";
 
 function FilterItems(props) {

@@ -1,0 +1,11 @@
+.input[type="radio"] {
+  display: none;
+}
+
+.star {
+  margin-top: 1rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  /* background: linear-gradient(to right, #ffc107 0%, #e4e5e9 80%); */
+}
