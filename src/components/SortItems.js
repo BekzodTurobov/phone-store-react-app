@@ -28,7 +28,7 @@ function SortItems(props) {
               onClick={(e) => {
                 cartCtx.setSelected(option);
                 cartCtx.setIsActive(false);
-                cartCtx.sortHandler(e);
+                cartCtx.sortHandler(option);
               }}
               className={classes["dropdown-item"]}
             >

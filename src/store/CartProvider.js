@@ -106,12 +106,12 @@ function CartProvider(props) {
     setIsActive(!isActive);
   };
 
-  const sortHandler = () => {
+  const sortHandler = (option) => {
     products.sort((a, b) => {
-      return b[`${selected}`] - a[`${selected}`];
+      return b[`${option}`] - a[`${option}`];
     });
   };
-  // sortHandler();
+
   /***************************************/
   // ADD & REMOVE ITEMS
 
