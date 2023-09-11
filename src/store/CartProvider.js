@@ -92,17 +92,6 @@ function CartProvider(props) {
   }, []);
 
   /***************************************/
-  // useEffect(() => {
-  //   const sortHandler = () => {
-  //     products.sort((a, b) => {
-  //       return b[`${selected}`] - a[`${selected}`];
-  //     });
-  //   };
-  //   sortHandler();
-  // }, [selected]);
-  products.sort((a, b) => {
-    return b[`${selected}`] - a[`${selected}`];
-  });
   /***************************************/
 
   useEffect(() => {
@@ -113,10 +102,16 @@ function CartProvider(props) {
   }, [currentPage]);
 
   /***************************************/
-  function toggleHandler() {
+  const toggleHandler = () => {
     setIsActive(!isActive);
-  }
+  };
 
+  const sortHandler = () => {
+    products.sort((a, b) => {
+      return b[`${selected}`] - a[`${selected}`];
+    });
+  };
+  // sortHandler();
   /***************************************/
   // ADD & REMOVE ITEMS
 
@@ -160,6 +155,7 @@ function CartProvider(props) {
     addItem: addItemToCartHandler,
     removeItem: removeFromCartHandler,
     toggleHandler,
+    sortHandler,
     prevPage,
     nextPage,
     changePage,
