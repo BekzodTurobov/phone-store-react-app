@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import classes from "./FilterItems.module.css";
+import classes from "./SortItems.module.css";
 import { AiFillCaretDown } from "react-icons/ai";
 
 import CartContext from "../store/cart-context";
 
-function FilterItems(props) {
+function SortItems(props) {
   const options = ["rating", "price", "discountPercentage"];
   const cartCtx = useContext(CartContext);
 
@@ -40,4 +40,4 @@ function FilterItems(props) {
   );
 }
 
-export default FilterItems;
+export default SortItems;

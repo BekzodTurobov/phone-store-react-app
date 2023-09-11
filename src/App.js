@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Pagination from "./components/Pagination";
 import CartProvider from "./store/CartProvider";
-import FilterItems from "./components/FilterItems";
+import FilterItems from "./components/SortItems";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);

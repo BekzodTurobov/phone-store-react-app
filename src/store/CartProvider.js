@@ -92,13 +92,17 @@ function CartProvider(props) {
   }, []);
 
   /***************************************/
+  // useEffect(() => {
+  //   const sortHandler = () => {
+  //     products.sort((a, b) => {
+  //       return b[`${selected}`] - a[`${selected}`];
+  //     });
+  //   };
+  //   sortHandler();
+  // }, [selected]);
   products.sort((a, b) => {
     return b[`${selected}`] - a[`${selected}`];
   });
-  // const sortHandler = () => {
-  //   // console.log(sorted);
-  // };
-  // sortHandler();
   /***************************************/
 
   useEffect(() => {
@@ -109,7 +113,7 @@ function CartProvider(props) {
   }, [currentPage]);
 
   /***************************************/
-  function toggleHandler(e) {
+  function toggleHandler() {
     setIsActive(!isActive);
   }
 
