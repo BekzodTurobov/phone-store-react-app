@@ -11,7 +11,9 @@ function RatingStars(props) {
           <FaStar
             key={i}
             className={classes.star}
-            color={currentRating <= props.rating ? "#ffc107" : "#e4e5e9"}
+            color={
+              currentRating <= Math.round(props.rating) ? "#ffc107" : "#e4e5e9"
+            }
           />
         );
       })}
