@@ -5,13 +5,13 @@ import { AiFillCaretDown } from "react-icons/ai";
 import CartContext from "../store/cart-context";
 
 function SortItems(props) {
-  const options = ["rating", "price", "discountPercentage"];
+  const options = ["id", "rating", "price", "discountPercentage"];
   const cartCtx = useContext(CartContext);
 
   return (
     <div className={classes.dropdown}>
       <div onClick={cartCtx.toggleHandler} className={classes["dropdown-btn"]}>
-        Filter by
+        Filter by :<span className={classes.selected}>{cartCtx.selected}</span>
         <span
           className={`${classes.downIcon} ${
             cartCtx.isActive ? classes.active : ""

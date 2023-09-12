@@ -1,11 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Form from "./Form";
 import classes from "./PhoneItems.module.css";
 import CartContext from "../store/cart-context";
 import RatingStars from "./RatingStars";
+import ImagePreview from "./ImagePreview";
 
 function PhoneItems(props) {
   const cartCtx = useContext(CartContext);
+  const [showImg, setShowImg] = useState(false);
+
+  const showImgHandler = () => {
+    setShowImg(true);
+  };
+
+  const hideImgHandler = () => {
+    setShowImg(false);
+  };
+
+  const imgsArr = props.images.map((img, i) => {
+    const imgsObj = {};
+    imgsObj.value = img;
+    imgsObj.id = i;
+    return imgsObj;
+  });
 
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
@@ -26,7 +43,19 @@ function PhoneItems(props) {
           <RatingStars rating={props.rating} />
         </span>
       </li>
-      <li>{props.description}</li>
+      <li>
+        {props.description}
+        <span onClick={showImgHandler} className={classes.seeArrow}>
+          see photos &rarr;
+        </span>
+        {showImg && (
+          <ImagePreview
+            onHideImgHandler={hideImgHandler}
+            showImg={showImg}
+            imgsArr={imgsArr}
+          />
+        )}
+      </li>
       <li>${props.price}</li>
       <li>{props.discountPercentage}%</li>
       <li>

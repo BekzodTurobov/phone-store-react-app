@@ -26,6 +26,7 @@ function MainItems(props) {
             name={item.title}
             price={item.price}
             rating={item.rating}
+            images={item.images}
             description={item.description}
             discountPercentage={item.discountPercentage}
           />

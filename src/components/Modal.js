@@ -4,7 +4,14 @@ import classes from "./Modal.module.css";
 // import CartContext from "../store/cart-context";
 
 const Backdrop = (props) => {
-  return <div onClick={props.onClose} className={classes.backdrop}></div>;
+  return (
+    <div
+      onClick={() => {
+        !props.showImg ? props.onClose() : props.onHide();
+      }}
+      className={classes.backdrop}
+    ></div>
+  );
 };
 
 const ModalOverlay = (props) => {
@@ -21,7 +28,11 @@ function Modal(props) {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <Backdrop onClose={props.onClose} />,
+        <Backdrop
+          showImg={props.showImg}
+          onHide={props.onHideImgHandler}
+          onClose={props.onClose}
+        />,
         portalElement
       )}
       {ReactDOM.createPortal(

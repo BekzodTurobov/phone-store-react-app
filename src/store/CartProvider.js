@@ -108,7 +108,7 @@ function CartProvider(props) {
 
   const sortHandler = (option) => {
     products.sort((a, b) => {
-      return b[`${option}`] - a[`${option}`];
+      return a[`${option}`] - b[`${option}`];
     });
   };
 

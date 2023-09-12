@@ -1,0 +1,53 @@
+.imgContainer {
+  text-align: center;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.active {
+  order: -1;
+  width: 40rem;
+  margin-inline: 10rem;
+}
+
+.flexRow {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.thumbnail {
+  margin-top: 2rem;
+}
+
+.clicked {
+  border: 5px solid #b94517;
+}
+
+.images {
+  cursor: pointer;
+}
+
+.imgCloseBtn {
+  position: absolute;
+  top: -5%;
+  right: 0;
+  font-size: 4rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #555;
+  background-color: transparent;
+  border: 1px solid #555;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgCloseBtn:hover {
+  color: #333;
+}
+
+.imgCloseBtn:active {
+  transform: translateY(2px);
+}

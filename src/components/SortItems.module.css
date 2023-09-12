@@ -1,5 +1,5 @@
 .dropdown {
-  width: 15rem;
+  width: 20rem;
   margin-inline: auto 7rem;
   margin-bottom: 4rem;
   position: relative;
@@ -12,9 +12,10 @@
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
   font-weight: bold;
   color: #333;
-  display: flex;
+  display: grid;
+  grid-template-columns: 4.7rem 9rem 1rem;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
   cursor: pointer;
 }
 
@@ -47,4 +48,8 @@
 }
 .downIcon.active {
   transform: rotateX(180deg);
+}
+
+.selected {
+  color: #b94517;
 }

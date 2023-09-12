@@ -36,3 +36,9 @@ li:nth-child(2) {
   color: red;
   margin-block: 2rem;
 }
+
+.seeArrow {
+  color: #b94517;
+  text-decoration: underline;
+  cursor: pointer;
+}
